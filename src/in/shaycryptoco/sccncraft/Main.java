@@ -19,13 +19,17 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+		Player player = (Player)sender;
 		
 		if (cmd.getName().equalsIgnoreCase("test")) {
-		
-			Player player = (Player)sender;
 			
 			player.sendMessage("test back to you");
 				
+		} else if (cmd.getName().equalsIgnoreCase("elephants")) {
+		
+			player.sendMessage("are gray");
+
 		};
 		
 		return true;
