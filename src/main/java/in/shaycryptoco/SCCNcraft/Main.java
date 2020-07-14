@@ -3,6 +3,7 @@ package in.shaycryptoco.SCCNcraft;
 import in.shaycryptoco.SCCNcraft.commands.EcoAdmin;
 import in.shaycryptoco.SCCNcraft.commands.EcoBalance;
 import in.shaycryptoco.SCCNcraft.commands.EcoPay;
+import in.shaycryptoco.SCCNcraft.listeners.BlockBreakListener;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,8 @@ public class Main extends JavaPlugin {
         getCommand("balance").setExecutor(new EcoBalance());
         getCommand("eco").setExecutor(new EcoAdmin());
         getCommand("pay").setExecutor(new EcoPay());
+
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
     }
 
     @Override
