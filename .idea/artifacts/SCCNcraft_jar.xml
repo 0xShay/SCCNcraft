@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SCCNcraft:jar">
+    <output-path>$PROJECT_DIR$/../../Minecraft Stuff/Servers Self-Hosted/(Spigot 1.16.1) DogeCraft/plugins</output-path>
+    <root id="archive" name="SCCNcraft.jar">
+      <element id="module-output" name="SCCNcraft" />
+    </root>
+  </artifact>
+</component>

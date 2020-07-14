@@ -1,9 +1,0 @@
-main: in.shaycryptoco.sccncraft.Main
-name: SCCNcraft
-version: 1.0.0
-commands:
-  test:
-    description: This is a test command.
-  elephants:
-    description: Elephants are a wild species of mammal typically found in Africa and Asia.
- 
