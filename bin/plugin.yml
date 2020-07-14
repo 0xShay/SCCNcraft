@@ -1,6 +1,0 @@
-main: in.shaycryptoco.sccncraft.Main
-name: SCCNcraft
-version: 1.0.0
-commands:
-  test:
-    description: This is a test command.
