@@ -1,5 +1,6 @@
-package in.shaycryptoco.SCCNcraft;
+package in.shaycryptoco.SCCNcraft.misc;
 
+import in.shaycryptoco.SCCNcraft.Main;
 import net.milkbowl.vault.economy.Economy;
 
 public class CurrencyFormat {

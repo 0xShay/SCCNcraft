@@ -4,6 +4,7 @@ import in.shaycryptoco.SCCNcraft.commands.EcoAdmin;
 import in.shaycryptoco.SCCNcraft.commands.EcoBalance;
 import in.shaycryptoco.SCCNcraft.commands.EcoPay;
 import in.shaycryptoco.SCCNcraft.listeners.BlockBreakListener;
+import in.shaycryptoco.SCCNcraft.misc.StartMessage;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +18,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+    	saveDefaultConfig();
         if (!setupEconomy() ) {
             log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
             getServer().getPluginManager().disablePlugin(this);
@@ -24,12 +26,13 @@ public class Main extends JavaPlugin {
         }
         getLogger().info("SCCNcraft has been enabled!");
 
-        getCommand("bal").setExecutor(new EcoBalance());
-        getCommand("balance").setExecutor(new EcoBalance());
-        getCommand("eco").setExecutor(new EcoAdmin());
-        getCommand("pay").setExecutor(new EcoPay());
-
+        new EcoAdmin(this);
+        new EcoBalance(this);
+        new EcoPay(this);
+        StartMessage.logMessage();
+        
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+        
     }
 
     @Override

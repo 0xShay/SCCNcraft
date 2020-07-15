@@ -16,7 +16,8 @@ import java.util.logging.Logger;
 
 public class BlockBreakListener implements Listener {
 
-    private static final Logger log = Logger.getLogger("Minecraft");
+    @SuppressWarnings("unused")
+	private static final Logger log = Logger.getLogger("Minecraft");
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {

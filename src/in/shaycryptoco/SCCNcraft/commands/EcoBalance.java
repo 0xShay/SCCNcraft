@@ -1,7 +1,7 @@
 package in.shaycryptoco.SCCNcraft.commands;
 
-import in.shaycryptoco.SCCNcraft.CurrencyFormat;
 import in.shaycryptoco.SCCNcraft.Main;
+import in.shaycryptoco.SCCNcraft.misc.CurrencyFormat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,6 +11,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class EcoBalance implements CommandExecutor {
+	
+	public Main plugin;
+	
+	public EcoBalance(Main plugin) {
+		this.plugin = plugin;
+		
+		plugin.getCommand("bal").setExecutor(this);
+		plugin.getCommand("balance").setExecutor(this);
+	}
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
