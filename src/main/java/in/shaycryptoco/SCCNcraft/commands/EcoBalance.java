@@ -1,6 +1,6 @@
 package in.shaycryptoco.SCCNcraft.commands;
 
-import in.shaycryptoco.SCCNcraft.CurrencyFormat;
+import in.shaycryptoco.SCCNcraft.misc.CurrencyFormat;
 import in.shaycryptoco.SCCNcraft.Main;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;

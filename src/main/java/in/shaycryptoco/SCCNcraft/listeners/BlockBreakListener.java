@@ -1,9 +1,13 @@
 package in.shaycryptoco.SCCNcraft.listeners;
 
 import in.shaycryptoco.SCCNcraft.Main;
+import in.shaycryptoco.SCCNcraft.events.SpawnerBreakEvent;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,10 +24,11 @@ public class BlockBreakListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
+
         Economy eco = Main.getEconomy();
         Player p = e.getPlayer();
 
-        if (e.getBlock().getType().toString().equalsIgnoreCase("diamond_ore")) {
+        if (e.getBlock().getType().equals(Material.DIAMOND_ORE)) {
             ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
             if (!item.getEnchantments().containsKey(Enchantment.SILK_TOUCH)) {
 
@@ -40,8 +45,15 @@ public class BlockBreakListener implements Listener {
 
         }
 
+        if (e.getPlayer().hasPermission("sccncraft.general.silkspawners") && e.getBlock().getType().equals(Material.SPAWNER)) {
 
+            ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
 
+            if (item.getEnchantments().containsKey(Enchantment.SILK_TOUCH)) {
+                Bukkit.getServer().getPluginManager().callEvent(new SpawnerBreakEvent(e.getPlayer(), e.getBlock()));
+            }
+
+        }
 
     }
 
