@@ -3,8 +3,11 @@ package in.shaycryptoco.SCCNcraft;
 import in.shaycryptoco.SCCNcraft.commands.EcoAdmin;
 import in.shaycryptoco.SCCNcraft.commands.EcoBalance;
 import in.shaycryptoco.SCCNcraft.commands.EcoPay;
+<<<<<<< HEAD:src/in/shaycryptoco/SCCNcraft/Main.java
 import in.shaycryptoco.SCCNcraft.listeners.BlockBreakListener;
 import in.shaycryptoco.SCCNcraft.misc.StartMessage;
+=======
+>>>>>>> parent of 56fab69... Diamond mining reward:src/main/java/in/shaycryptoco/SCCNcraft/Main.java
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +29,7 @@ public class Main extends JavaPlugin {
         }
         getLogger().info("SCCNcraft has been enabled!");
 
+<<<<<<< HEAD:src/in/shaycryptoco/SCCNcraft/Main.java
         new EcoAdmin(this);
         new EcoBalance(this);
         new EcoPay(this);
@@ -33,6 +37,12 @@ public class Main extends JavaPlugin {
         
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         
+=======
+        getCommand("bal").setExecutor(new EcoBalance());
+        getCommand("balance").setExecutor(new EcoBalance());
+        getCommand("eco").setExecutor(new EcoAdmin());
+        getCommand("pay").setExecutor(new EcoPay());
+>>>>>>> parent of 56fab69... Diamond mining reward:src/main/java/in/shaycryptoco/SCCNcraft/Main.java
     }
 
     @Override
