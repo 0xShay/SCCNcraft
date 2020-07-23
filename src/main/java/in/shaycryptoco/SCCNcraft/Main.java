@@ -1,9 +1,6 @@
 package in.shaycryptoco.SCCNcraft;
 
-import in.shaycryptoco.SCCNcraft.commands.EcoAdmin;
-import in.shaycryptoco.SCCNcraft.commands.EcoBalance;
-import in.shaycryptoco.SCCNcraft.commands.EcoPay;
-import in.shaycryptoco.SCCNcraft.commands.Rules;
+import in.shaycryptoco.SCCNcraft.commands.*;
 import in.shaycryptoco.SCCNcraft.listeners.BlockBreakListener;
 import in.shaycryptoco.SCCNcraft.listeners.CustomListeners;
 import net.milkbowl.vault.economy.Economy;
@@ -31,6 +28,7 @@ public class Main extends JavaPlugin {
         getCommand("eco").setExecutor(new EcoAdmin());
         getCommand("pay").setExecutor(new EcoPay());
         getCommand("rules").setExecutor(new Rules());
+        getCommand("discord").setExecutor(new Discord());
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new CustomListeners(), this);

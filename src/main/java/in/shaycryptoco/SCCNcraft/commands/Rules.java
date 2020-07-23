@@ -14,11 +14,12 @@ public class Rules implements CommandExecutor {
             Player player = (Player) sender;
 
             player.sendMessage("" + ChatColor.GREEN + ChatColor.BOLD + "[==={ SCCNcraft Rules }===]");
-            player.sendMessage(ChatColor.AQUA + "1) " + ChatColor.GREEN + "Nothing");
-            player.sendMessage(ChatColor.AQUA + "2) " + ChatColor.GREEN + "Nothing");
-            player.sendMessage(ChatColor.AQUA + "3) " + ChatColor.GREEN + "Nothing");
-            player.sendMessage(ChatColor.AQUA + "4) " + ChatColor.GREEN + "Nothing");
-            player.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "Nothing");
+            player.sendMessage(ChatColor.AQUA + "1) " + ChatColor.GREEN + "Be respectful to ALL players - not just staff.");
+            player.sendMessage(ChatColor.AQUA + "2) " + ChatColor.GREEN + "No extremist discussion in chat.");
+            player.sendMessage(ChatColor.AQUA + "3) " + ChatColor.GREEN + "No racism.");
+            player.sendMessage(ChatColor.AQUA + "4) " + ChatColor.GREEN + "No doxxing (giving out personal information about others without their permission)");
+            player.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "NO HACKS");
+            player.sendMessage(ChatColor.AQUA + "6) " + ChatColor.GREEN + "Have fun!");
 
         }
 
