@@ -12,5 +12,7 @@ commands:
     description: Pay SCCN to users
   rules:
     description: Check the server rules
+  help:
+    description: View more information
   discord:
     description: View the Discord server invite link

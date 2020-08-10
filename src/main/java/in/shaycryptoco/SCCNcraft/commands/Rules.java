@@ -13,13 +13,19 @@ public class Rules implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            player.sendMessage("" + ChatColor.GREEN + ChatColor.BOLD + "[==={ SCCNcraft Rules }===]");
-            player.sendMessage(ChatColor.AQUA + "1) " + ChatColor.GREEN + "Be respectful to ALL players - not just staff.");
-            player.sendMessage(ChatColor.AQUA + "2) " + ChatColor.GREEN + "No extremist discussion in chat.");
-            player.sendMessage(ChatColor.AQUA + "3) " + ChatColor.GREEN + "No racism.");
-            player.sendMessage(ChatColor.AQUA + "4) " + ChatColor.GREEN + "No doxxing (giving out personal information about others without their permission)");
-            player.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "NO HACKS");
-            player.sendMessage(ChatColor.AQUA + "6) " + ChatColor.GREEN + "Have fun!");
+            if (player.hasPermission("sccncraft.general.rules")) {
+
+                player.sendMessage("" + ChatColor.GREEN + ChatColor.BOLD + "[==={ SCCNcraft Rules }===]");
+                player.sendMessage(ChatColor.AQUA + "1) " + ChatColor.GREEN + "Be respectful to ALL players - not just staff.");
+                player.sendMessage(ChatColor.AQUA + "2) " + ChatColor.GREEN + "No extremist discussion in chat.");
+                player.sendMessage(ChatColor.AQUA + "3) " + ChatColor.GREEN + "No racism.");
+                player.sendMessage(ChatColor.AQUA + "4) " + ChatColor.GREEN + "No doxxing (giving out personal information about others without their permission)");
+                player.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "NO HACKS");
+                player.sendMessage(ChatColor.AQUA + "6) " + ChatColor.GREEN + "Have fun!");
+
+            } else {
+                player.sendMessage(ChatColor.GREEN + "You don't have permission to do that!");
+            }
 
         }
 
