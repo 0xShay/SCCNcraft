@@ -28,6 +28,16 @@ public class BlockBreakListener implements Listener {
         Economy eco = getEconomy();
         Player p = e.getPlayer();
 
+        if (e.getBlock().getType().equals(Material.IRON_ORE) || e.getBlock().getType().equals(Material.GOLD_ORE) || e.getBlock().getType().equals(Material.REDSTONE_ORE) || e.getBlock().getType().equals(Material.LAPIS_ORE) || e.getBlock().getType().equals(Material.DIAMOND_ORE) || e.getBlock().getType().equals(Material.EMERALD_ORE) || e.getBlock().getType().equals(Material.ANCIENT_DEBRIS)) {
+
+            for(Player player: Bukkit.getOnlinePlayers()) {
+
+                if(player.hasPermission("sccncraft.admin.notify")) player.sendMessage(ChatColor.AQUA + p.getName() + ChatColor.GREEN + " just mined a " + ChatColor.AQUA + e.getBlock().getType() + ChatColor.GREEN + "!");
+
+            }
+
+        }
+
 //        if (e.getBlock().getType().equals(Material.DIAMOND_ORE)) {
 //
 //            ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
