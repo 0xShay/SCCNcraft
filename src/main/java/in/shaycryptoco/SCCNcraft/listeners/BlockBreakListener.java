@@ -28,24 +28,24 @@ public class BlockBreakListener implements Listener {
         Economy eco = getEconomy();
         Player p = e.getPlayer();
 
-        if (e.getBlock().getType().equals(Material.DIAMOND_ORE)) {
-
-            ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
-            if (!item.getEnchantments().containsKey(Enchantment.SILK_TOUCH)) {
-
-                // reward for mining 1 diamond ore
-                Random rand = new Random();
-                double mining_reward = Double.parseDouble(String.format("%.2f", (rand.nextDouble() * 2) + 1));
-                // random from 1 to 3
-
-                EconomyResponse response = eco.depositPlayer(p, mining_reward);
-                if (response.transactionSuccess()) {
-                    p.sendMessage(ChatColor.GREEN + "You got " + ChatColor.AQUA + mining_reward + ChatColor.GREEN + " SCCN for mining a diamond ore!");
-                }
-
-            }
-
-        }
+//        if (e.getBlock().getType().equals(Material.DIAMOND_ORE)) {
+//
+//            ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
+//            if (!item.getEnchantments().containsKey(Enchantment.SILK_TOUCH)) {
+//
+//                // reward for mining 1 diamond ore
+//                Random rand = new Random();
+//                double mining_reward = Double.parseDouble(String.format("%.2f", (rand.nextDouble() * 2) + 1));
+//                // random from 1 to 3
+//
+//                EconomyResponse response = eco.depositPlayer(p, mining_reward);
+//                if (response.transactionSuccess()) {
+//                    p.sendMessage(ChatColor.GREEN + "You got " + ChatColor.AQUA + mining_reward + ChatColor.GREEN + " SCCN for mining a diamond ore!");
+//                }
+//
+//            }
+//
+//        }
 
         if (e.getPlayer().hasPermission("sccncraft.general.silkspawners") && e.getBlock().getType().equals(Material.SPAWNER)) {
 

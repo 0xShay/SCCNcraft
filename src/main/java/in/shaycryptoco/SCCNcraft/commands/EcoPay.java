@@ -6,9 +6,11 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class EcoPay implements CommandExecutor {
@@ -48,6 +50,14 @@ public class EcoPay implements CommandExecutor {
                 }
 
             }
+
+        } else {
+
+            Server server = Bukkit.getServer();
+
+            ConsoleCommandSender console = server.getConsoleSender();
+
+            console.sendMessage("" + ChatColor.GREEN + ChatColor.BOLD + "You can't use this command from the console!");
 
         }
 

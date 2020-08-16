@@ -6,9 +6,11 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class EcoAdmin implements CommandExecutor {
@@ -79,6 +81,66 @@ public class EcoAdmin implements CommandExecutor {
 
                 } else {
                     player.sendMessage(ChatColor.GREEN + "You don't have permission to do that!");
+                }
+
+            }
+
+        } else {
+
+            Server server = Bukkit.getServer();
+
+            ConsoleCommandSender console = server.getConsoleSender();
+
+            Economy economy = Main.getEconomy();
+
+            if (args.length == 3 && args[0].equalsIgnoreCase("take")) {
+
+                double amount = Double.valueOf(args[1]);
+
+                if (Bukkit.getServer().getPlayer(args[2]) == null) {
+
+                    console.sendMessage(ChatColor.GREEN + "A player with that name cannot be found!");
+
+                } else {
+
+                    Player victim = Bukkit.getServer().getPlayer(args[2]);
+
+                    EconomyResponse response = economy.withdrawPlayer(victim, amount);
+                    if (response.transactionSuccess()) {
+                        victim.sendMessage(ChatColor.AQUA + CurrencyFormat.formatCurrency(response.amount) + ChatColor.GREEN + " SCCN has been removed from your balance!");
+                        victim.sendMessage(ChatColor.GREEN + "Your new balance is " + ChatColor.AQUA + CurrencyFormat.formatCurrency(response.balance) + ChatColor.GREEN + " SCCN");
+                        console.sendMessage(ChatColor.AQUA + CurrencyFormat.formatCurrency(response.amount) + ChatColor.GREEN + " SCCN has been removed from " + ChatColor.AQUA + victim.getDisplayName() + ChatColor.GREEN + "'s balance");
+                        console.sendMessage(ChatColor.GREEN + "Their new balance is " + ChatColor.AQUA + CurrencyFormat.formatCurrency(response.balance) + ChatColor.GREEN + " SCCN");
+                    } else {
+                        console.sendMessage(ChatColor.GREEN + "Failed to remove money from the user's balance.");
+                        console.sendMessage(ChatColor.GREEN + "Reason: " + ChatColor.GOLD + response.errorMessage);
+                    }
+
+                }
+
+            } else if (args.length == 3 && args[0].equalsIgnoreCase("give")) {
+
+                double amount = Double.valueOf(args[1]);
+
+                if (Bukkit.getServer().getPlayer(args[2]) == null) {
+
+                    console.sendMessage(ChatColor.GREEN + "A player with that name cannot be found!");
+
+                } else {
+
+                    Player victim = Bukkit.getServer().getPlayer(args[2]);
+
+                    EconomyResponse response = economy.depositPlayer(victim, amount);
+                    if (response.transactionSuccess()) {
+                        victim.sendMessage(ChatColor.AQUA + CurrencyFormat.formatCurrency(response.amount) + ChatColor.GREEN + " SCCN has been added to your balance!");
+                        victim.sendMessage(ChatColor.GREEN + "Your new balance is " + ChatColor.AQUA + CurrencyFormat.formatCurrency(response.balance) + ChatColor.GREEN + " SCCN");
+                        console.sendMessage(ChatColor.AQUA + CurrencyFormat.formatCurrency(response.amount) + ChatColor.GREEN + " SCCN has been added to " + ChatColor.AQUA + victim.getDisplayName() + ChatColor.GREEN + "'s balance");
+                        console.sendMessage(ChatColor.GREEN + "Their new balance is " + ChatColor.AQUA + CurrencyFormat.formatCurrency(response.balance) + ChatColor.GREEN + " SCCN");
+                    } else {
+                        console.sendMessage(ChatColor.GREEN + "Failed to add money to the user's balance.");
+                        console.sendMessage(ChatColor.GREEN + "Reason: " + ChatColor.GOLD + response.errorMessage);
+                    }
+
                 }
 
             }

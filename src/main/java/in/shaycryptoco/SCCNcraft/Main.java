@@ -29,7 +29,6 @@ public class Main extends JavaPlugin {
         getCommand("pay").setExecutor(new EcoPay());
         getCommand("rules").setExecutor(new Rules());
         getCommand("help").setExecutor(new Help());
-        getCommand("discord").setExecutor(new Discord());
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new CustomListeners(), this);
