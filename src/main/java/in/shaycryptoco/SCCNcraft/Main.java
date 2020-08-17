@@ -3,6 +3,7 @@ package in.shaycryptoco.SCCNcraft;
 import in.shaycryptoco.SCCNcraft.commands.*;
 import in.shaycryptoco.SCCNcraft.listeners.BlockBreakListener;
 import in.shaycryptoco.SCCNcraft.listeners.CustomListeners;
+import in.shaycryptoco.SCCNcraft.listeners.PlayerDeathListener;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +33,7 @@ public class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new CustomListeners(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
     }
 
     @Override
