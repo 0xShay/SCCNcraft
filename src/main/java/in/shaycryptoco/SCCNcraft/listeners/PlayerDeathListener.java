@@ -19,24 +19,19 @@ public class PlayerDeathListener implements Listener {
 
         Server server = Bukkit.getServer();
         Player victim = e.getEntity();
-        Player killer = victim.getKiller();
+        
+        ConsoleCommandSender console = server.getConsoleSender();
 
-        if (killer != null) {
+        console.sendMessage(ChatColor.GREEN + victim.getName() + "'s head has been dropped!");
 
-            ConsoleCommandSender console = server.getConsoleSender();
+        ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
 
-            console.sendMessage(ChatColor.GREEN + victim.getName() + "'s head has been dropped!");
+        SkullMeta sm = (SkullMeta) item.getItemMeta();
+        sm.setOwner(victim.getName());
 
-            ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
+        item.setItemMeta(sm);
 
-            SkullMeta sm = (SkullMeta) item.getItemMeta();
-            sm.setOwner(victim.getName());
-
-            item.setItemMeta(sm);
-
-            e.getDrops().add(item);
-
-        }
+        e.getDrops().add(item);
 
     }
 

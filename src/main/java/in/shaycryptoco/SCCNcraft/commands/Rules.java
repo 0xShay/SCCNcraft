@@ -24,8 +24,12 @@ public class Rules implements CommandExecutor {
                 player.sendMessage(ChatColor.AQUA + "2) " + ChatColor.GREEN + "No extremist discussion in chat.");
                 player.sendMessage(ChatColor.AQUA + "3) " + ChatColor.GREEN + "No racism.");
                 player.sendMessage(ChatColor.AQUA + "4) " + ChatColor.GREEN + "No doxxing (giving out personal information about others without their permission)");
-                player.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "NO HACKS");
-                player.sendMessage(ChatColor.AQUA + "6) " + ChatColor.GREEN + "Have fun!");
+                player.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "No hacks");
+                player.sendMessage(ChatColor.AQUA + "6) " + ChatColor.GREEN + "No griefing");
+                player.sendMessage(ChatColor.AQUA + "7) " + ChatColor.GREEN + "No tp-trapping");
+                player.sendMessage(ChatColor.AQUA + "8) " + ChatColor.GREEN + "Abandoning a claim just to kill someone without the agreement of both parties is not allowed.");
+                player.sendMessage(ChatColor.AQUA + "9) " + ChatColor.GREEN + "Staff will always have the final judgement in situations.");
+                player.sendMessage(ChatColor.AQUA + "10) " + ChatColor.GREEN + "Have fun!");
 
             } else {
                 player.sendMessage(ChatColor.GREEN + "You don't have permission to do that!");
@@ -42,8 +46,12 @@ public class Rules implements CommandExecutor {
             console.sendMessage(ChatColor.AQUA + "2) " + ChatColor.GREEN + "No extremist discussion in chat.");
             console.sendMessage(ChatColor.AQUA + "3) " + ChatColor.GREEN + "No racism.");
             console.sendMessage(ChatColor.AQUA + "4) " + ChatColor.GREEN + "No doxxing (giving out personal information about others without their permission)");
-            console.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "NO HACKS");
-            console.sendMessage(ChatColor.AQUA + "6) " + ChatColor.GREEN + "Have fun!");
+            console.sendMessage(ChatColor.AQUA + "5) " + ChatColor.GREEN + "No hacks");
+            console.sendMessage(ChatColor.AQUA + "6) " + ChatColor.GREEN + "No griefing");
+            console.sendMessage(ChatColor.AQUA + "7) " + ChatColor.GREEN + "No tp-trapping");
+            console.sendMessage(ChatColor.AQUA + "8) " + ChatColor.GREEN + "Abandoning a claim just to kill someone without the agreement of both parties is not allowed.");
+            console.sendMessage(ChatColor.AQUA + "9) " + ChatColor.GREEN + "Staff will always have the final judgement in situations.");
+            console.sendMessage(ChatColor.AQUA + "10) " + ChatColor.GREEN + "Have fun!");
 
         }
 
