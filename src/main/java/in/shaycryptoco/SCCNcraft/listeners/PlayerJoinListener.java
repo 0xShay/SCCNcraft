@@ -9,7 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.*;
 
 import java.util.logging.Logger;
@@ -18,12 +20,15 @@ public class PlayerJoinListener implements Listener {
 
     private static final Logger log = Logger.getLogger("Minecraft");
 
+    String balance = "";
+    BukkitTask runnable;
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
 
         Economy economy = Main.getEconomy();
 
-        Player player = e.getPlayer();
+        final Player player = e.getPlayer();
 
         ScoreboardManager m = Bukkit.getScoreboardManager();
         Scoreboard b = m.getNewScoreboard();
@@ -34,16 +39,32 @@ public class PlayerJoinListener implements Listener {
 
         o.getScore(" ").setScore(5);
         o.getScore(ChatColor.GREEN + "Player: " + ChatColor.AQUA + player.getName()).setScore(4);
-        o.getScore(ChatColor.GREEN + "Balance: " + ChatColor.AQUA + CurrencyFormat.formatCurrency(economy.getBalance(player)) + " SCCN").setScore(3);
+        balance = ChatColor.GREEN + "Balance: " + ChatColor.AQUA + CurrencyFormat.formatCurrency(economy.getBalance(player)) + " SCCN";
+        o.getScore(balance).setScore(3);
         o.getScore("").setScore(2);
         o.getScore(ChatColor.AQUA + "sccncraft.shaycryptoco.in").setScore(1);
 
-        Bukkit.getScheduler().runTaskTimerAsynchronously(Main, () -> {
-            // code
-        });
-
         player.setScoreboard(b);
+
+        runnable = new BukkitRunnable() {
+            public void run() {
+                updateScoreboard(player);
+            };
+        }.runTaskTimer(Main.getPlugin(Main.class), 10, 10);
+
+        // 10 ticks == 0.5 seconds (20 * 0.5)
 
     }
 
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent e) {
+        runnable.cancel();
+    }
+
+    public void updateScoreboard(Player player) {
+        Economy economy = Main.getEconomy();
+        player.getScoreboard().getObjective("SCCN").getScoreboard().resetScores(balance);
+        balance = ChatColor.GREEN + "Balance: " + ChatColor.AQUA + CurrencyFormat.formatCurrency(economy.getBalance(player)) + " SCCN";
+        player.getScoreboard().getObjective("SCCN").getScore(balance).setScore(3);
+    }
 }

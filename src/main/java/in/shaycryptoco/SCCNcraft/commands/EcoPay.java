@@ -28,21 +28,29 @@ public class EcoPay implements CommandExecutor {
                     Player victim = Bukkit.getServer().getPlayer(args[0]);
                     double amount = Double.valueOf(args[1]);
 
-                    EconomyResponse responseWithdraw = economy.withdrawPlayer(player, amount);
-                    if (responseWithdraw.transactionSuccess()) {
-                        // money has been taken from sender
-                        EconomyResponse responseDeposit = economy.depositPlayer(victim, amount);
-                        if (responseDeposit.transactionSuccess()) {
-                            // money has been paid to receiver
-                            player.sendMessage(ChatColor.GREEN + "You have sent " + ChatColor.AQUA + CurrencyFormat.formatCurrency(amount) + ChatColor.GREEN + " SCCN to " + ChatColor.AQUA + victim.getDisplayName());
-                            victim.sendMessage(ChatColor.GREEN + "You have received " + ChatColor.AQUA + CurrencyFormat.formatCurrency(amount) + ChatColor.GREEN + " SCCN from " + ChatColor.AQUA + player.getDisplayName());
-                        } else {
-                            victim.sendMessage(ChatColor.GREEN + "Failed to receive SCCN from user.");
-                            victim.sendMessage(ChatColor.GREEN + "Reason: " + ChatColor.GOLD + responseDeposit.errorMessage);
-                        }
+                    if (victim.getName() == player.getName()) {
+
+                        player.sendMessage(ChatColor.GREEN + "You can't pay yourself!");
+
                     } else {
-                        player.sendMessage(ChatColor.GREEN + "Failed to send SCCN to user.");
-                        player.sendMessage(ChatColor.GREEN + "Reason: " + ChatColor.GOLD + responseWithdraw.errorMessage);
+
+                        EconomyResponse responseWithdraw = economy.withdrawPlayer(player, amount);
+                        if (responseWithdraw.transactionSuccess()) {
+                            // money has been taken from sender
+                            EconomyResponse responseDeposit = economy.depositPlayer(victim, amount);
+                            if (responseDeposit.transactionSuccess()) {
+                                // money has been paid to receiver
+                                player.sendMessage(ChatColor.GREEN + "You have sent " + ChatColor.AQUA + CurrencyFormat.formatCurrency(amount) + ChatColor.GREEN + " SCCN to " + ChatColor.AQUA + victim.getDisplayName());
+                                victim.sendMessage(ChatColor.GREEN + "You have received " + ChatColor.AQUA + CurrencyFormat.formatCurrency(amount) + ChatColor.GREEN + " SCCN from " + ChatColor.AQUA + player.getDisplayName());
+                            } else {
+                                victim.sendMessage(ChatColor.GREEN + "Failed to receive SCCN from user.");
+                                victim.sendMessage(ChatColor.GREEN + "Reason: " + ChatColor.GOLD + responseDeposit.errorMessage);
+                            }
+                        } else {
+                            player.sendMessage(ChatColor.GREEN + "Failed to send SCCN to user.");
+                            player.sendMessage(ChatColor.GREEN + "Reason: " + ChatColor.GOLD + responseWithdraw.errorMessage);
+                        }
+
                     }
 
                 } else {
