@@ -14,3 +14,5 @@ commands:
     description: Check the server rules
   help:
     description: View more information
+  playtime:
+    description: View user playtime

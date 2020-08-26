@@ -33,12 +33,13 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("pay").setExecutor(new EcoPay());
         getCommand("rules").setExecutor(new Rules());
         getCommand("help").setExecutor(new Help());
+        getCommand("playtime").setExecutor(new Playtime());
 
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new CustomListeners(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerBedEnterListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+//        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
     }
 
     @Override
